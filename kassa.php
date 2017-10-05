@@ -83,6 +83,8 @@
 					<th>Soll</th>
 					<th>Haben</th>
 					<th>Beleg</th>
+					<th>Bearbeitung</th>
+					<th>test</th>
 				</tr>
 				
 				<?php
@@ -96,6 +98,8 @@
 							<td><?php echo $row['soll'] ?></td>
 							<td><?php echo $row['haben'] ?></td>
 							<td><a href="uploads/<?php echo $row['file'] ?>">Beleg anzeigen</a></td>
+							<td><form action="toedit.php" method="post"><button type="submit">Edit</button></td>
+							<td><input type="radio" value="<?php echo $row['id'] ?>" name="idedit" checked="checked"></input></form></td>
 						</tr>
 					<?php
 				}
