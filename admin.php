@@ -34,6 +34,9 @@
 
 				mysqli_close($db);
 				?>
+				
+		Neuer User hinzufügen:
+		
 	</body>
 
 </html>
