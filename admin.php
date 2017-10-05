@@ -2,7 +2,7 @@
 
 	//error_reporting(0);
 	
-	include("check.php");
+	include("checkadmin.php");
 	include("connection.php");		
 ?>
 
@@ -14,39 +14,6 @@
 		<meta charset="utf-8">
 		<title>Kassa</title>
 		<link rel="stylesheet" href="style.css" type="text/css" />
-		
-		<style>
-			table, th, td {
-				border: 1px solid black;
-				border-collapse: collapse;
-			}
-			th, td {
-				padding: 5px;
-				text-align: center;
-			}
-			
-			th#thbeschreibung, td#tdbeschreibung {
-				padding: 5px;
-				text-align: left;
-			}
-			
-			tr:nth-child(even) {
-				background-color: #eee;
-			}
-			tr:nth-child(odd) {
-			   background-color:#fff;
-			}
-			th {
-				background-color: black;
-				color: white;
-			}
-			
-			tr#summe th {
-				background-color: orange;
-				color: black;
-				text-align: center;
-			}
-		</style>
 	</head>
 
 	<body>

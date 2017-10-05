@@ -22,6 +22,15 @@
 			<input name="password" type="password" class="input" size="25" required />
 			<input type="submit" name="submit" value="Login!" />
 		</form>
+		
+		<br><br><br>
+		
+		Als admin anmelden:
+		<form method="post" action="loginadmin.php">
+			<input name="username" type="text" class="input" size="25" required />
+			<input name="password" type="password" class="input" size="25" required />
+			<input type="submit" name="submit" value="Login!" />
+		</form>
 	</body>
 
 </html>
