@@ -88,7 +88,7 @@
 				</tr>
 				
 				<?php
-				$sql="SELECT * FROM zahlungen";
+				$sql="SELECT * FROM zahlungen ORDER BY id DESC";
 				$result_set=mysqli_query($db, $sql);
 				while($row=mysqli_fetch_array($result_set))
 				{

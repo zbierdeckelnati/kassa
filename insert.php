@@ -5,23 +5,6 @@
 	$soll = $_POST['soll'];
 	$haben = $_POST['haben'];
 
-	
-	if (!$db) {
-    die("Connection failed: " . mysqli_connect_error());
-	}
-
-	$sql = "UPDATE zahlungen SET lastname='Doe' WHERE id=2";
-
-	if (mysqli_query($db, $sql)) {
-		echo "Record updated successfully";
-	} else {
-		echo "Error updating record: " . mysqli_error($db);
-	}
-
-	mysqli_close($db);
-	?>
-	
-	
 	if(isset($_POST['btn-upload']))
 	{    
 		 
