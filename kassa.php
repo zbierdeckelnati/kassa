@@ -6,60 +6,103 @@
 	include("connection.php");		
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <title>Kassa</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <style>
+	div.input-group {
+		margin-bottom: 30px;
+	}
+	
+	h3 {
+		margin-bottom: 30px;
+		margin-top: 60px;
+	}
+	
+	nav.navbar {
+		border-radius: 0px;
+	}
+  </style>
+</head>
+<body>
 
-<html>
-
-	<head>
-		<meta charset="utf-8">
-		<title>Kassa</title>
-		<link rel="stylesheet" href="style.css" type="text/css" />
-		
-		<style>
-			table, th, td {
-				border: 1px solid black;
-				border-collapse: collapse;
-			}
-			th, td {
-				padding: 5px;
-				text-align: center;
-			}
-			
-			th#thbeschreibung, td#tdbeschreibung {
-				padding: 5px;
-				text-align: left;
-			}
-			
-			tr:nth-child(even) {
-				background-color: #eee;
-			}
-			tr:nth-child(odd) {
-			   background-color:#fff;
-			}
-			th {
-				background-color: black;
-				color: white;
-			}
-			
-			tr#summe th {
-				background-color: orange;
-				color: black;
-				text-align: center;
-			}
-		</style>
-	</head>
-
-	<body>
-		<h1 class="hello">Hallo, <em><?php echo $login_user;?>!</em></h1>
-		<h2><a href="logout.php" style="font-size:18px">Logout?</a></h2>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="kassa.php">Kassa</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kassa auswählen <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="bslmitarbeiter.php">BSL Mitarbeiter</a></li>
+            <li><a href="virtua.php">Virtua</a></li>
+            <li><a href="#">Selecta</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Profil</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container">
+  		<h1>Hallo, <em><?php echo $login_user;?>!</em></h1>
+		<hr>
+		<h3> Neue Zahlung aufnehmen </h3>
 		
 				<form action="insert.php" method="post" enctype="multipart/form-data">
-					<input type="text" name="beschreibung"></input> </br></br>
-					<input type="text" name="soll"></input> </br></br>
-					<input type="text" name="haben"></input> </br></br>
-					<input type="file" name="file" /> </br></br></br>
+					<label>Kasse auswählen</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span>
+						<!--<input id="input-lg" type="text" class="form-control input-lg" name="datum" placeholder="Datum">-->
+						<select class="form-control" id="sel1" name="datenbank">
+							<option value="bslmitarbeiter">BSL-Mitarbeiter</option>
+							<option value="virtua">Virtua</option>
+							<option value="selecta">Selecta</option>
+						</select>
+					</div>
 					
-					<button type="submit" name="btn-upload">upload</button>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+						<input id="datum" type="text" class="form-control" name="datum" placeholder="Datum" required>
+					</div>
+					
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+						<input id="beschreibung" type="text" class="form-control" name="beschreibung" placeholder="Beschreibung" required>
+					</div>
+					
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-plus-sign"></i></span>
+						<input id="soll" type="text" class="form-control" name="soll" placeholder="Soll" required>
+					</div>
+					
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-minus-sign"></i></span>
+						<input id="haben" type="text" class="form-control" name="haben" placeholder="Haben" required>
+					</div>
+					
+					<label>Beleg auswählen</label>					
+					<input type="file" name="file" class="btn btn-default"/> </br></br></br>
+									
+					<button type="submit" name="btn-upload" class="btn btn-default">Zahlung aufnehmen</button>
 				</form>
 				
 				<br /><br />
@@ -71,12 +114,6 @@
 					<label>File Uploaded Successfully...  <a href="view.php">click here to view file.</a></label>
 					<?php
 				}
-				else if(isset($_GET['fail']))
-				{
-					?>
-					<label>Problem While File Uploading !</label>
-					<?php
-				}
 				else
 				{
 					?>
@@ -85,74 +122,7 @@
 				}
 				?>
 				</form>
-				
-			<table width="60%" border="1">
-				<tr>
-					<th id="thbeschreibung">Beschreibung</th>
-					<th>Soll</th>
-					<th>Haben</th>
-					<th>Beleg</th>
-					<th>Bearbeitung</th>
-					<th>test</th>
-				</tr>
-				
-				<?php
-				$sql="SELECT * FROM zahlungen ORDER BY id DESC";
-				$result_set=mysqli_query($db, $sql);
-				while($row=mysqli_fetch_array($result_set))
-				{
-					?>
-						<tr>
-							<td id="tdbeschreibung"><?php echo $row['beschreibung'] ?></td>
-							<td><?php echo $row['soll'] ?></td>
-							<td><?php echo $row['haben'] ?></td>
-							<td><a href="uploads/<?php echo $row['file'] ?>">Beleg anzeigen</a></td>
-							<td><form action="toedit.php" method="post"><button type="submit">Edit</button></td>
-							<td><input type="radio" value="<?php echo $row['id'] ?>" name="idedit" checked="checked"></input></form></td>
-						</tr>
-					<?php
-				}
-				?>
-				
-				<?php
+</div>
 
-				$sql="SELECT sum(soll) as totalsoll FROM zahlungen";
-				$result_set=mysqli_query($db, $sql);
-				while ($row = mysqli_fetch_assoc($result_set))
-				{?>
-				<tr id="summe">
-				<th>Summe</th>
-					<th><?php echo $row['totalsoll']; ?> CHF</th>
-				  <?php 
-				}
-				
-				$sql="SELECT sum(haben) as totalhaben FROM zahlungen";
-				$result_set=mysqli_query($db, $sql);
-				while ($row = mysqli_fetch_assoc($result_set))
-				{?>
-					<th><?php echo $row['totalhaben']; ?> CHF</th>
-				  <?php 
-				}?>
-				
-				<th></th>
-				<th>Gesamtsumme</th>
-				
-				<?php
-
-				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM zahlungen";
-				$result_set=mysqli_query($db, $sql);
-				while ($row = mysqli_fetch_assoc($result_set))
-				{?>
-					<th><?php echo $row['totalsollhaben']; ?> CHF</th>
-				  <?php 
-				}
-				
-				
-				mysqli_close($db);
-				?>
-
-				</tr>
-			</table>
-	</body>
-
+</body>
 </html>

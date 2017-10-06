@@ -1,6 +1,17 @@
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+</head>
+
+
+<body>
 <?php
 	include_once 'connection.php';
 
+	$datenbank = $_POST['datenbank'];
 	$beschreibung = $_POST['beschreibung'];
 	$soll = $_POST['soll'];
 	$haben = $_POST['haben'];
@@ -23,12 +34,22 @@
 		
 		if(move_uploaded_file($file_loc,$folder.$final_file))
 		{
-			$sql="INSERT INTO zahlungen(file,type,size, beschreibung, soll, haben) VALUES('$final_file','$file_type','$new_size', '$beschreibung', '$soll', '$haben')";
+			$sql="INSERT INTO $datenbank(file,type,size, beschreibung, soll, haben) VALUES('$final_file','$file_type','$new_size', '$beschreibung', '$soll', '$haben')";
 			mysqli_query($db, $sql);
 			?>
 			<script>
-			alert('successfully uploaded');
-			window.location.href='index.php?success';
+				setTimeout(function () { 
+				swal({
+				  title: "Erfolgreich hochgeladen!",
+				  //text: "Message!",
+				  type: "success",
+				  confirmButtonText: "OK"
+				},
+				function(isConfirm){
+				  if (isConfirm) {
+					window.location.href = "kassa.php";
+				  }
+				}); }, 250);
 			</script>
 			<?php
 		}
@@ -36,10 +57,13 @@
 		{
 			?>
 			<script>
-			alert('error while uploading file');
+			alert('Fehler beim Hochladen');
 			window.location.href='index.php?fail';
 			</script>
 			<?php
 		}
 	}
 ?>
+</body>
+
+</html>
