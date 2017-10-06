@@ -10,6 +10,9 @@
 	$idadmin = $_POST['idadmin'];
 	$updateusername = $_POST['updateusername'];
 	$updatepassword = $_POST['updatepassword'];
+	$updatebsl = $_POST['updatebsl'];
+	$updatevirtua = $_POST['updatevirtua'];
+	$updateselecta = $_POST['updateselecta'];
 ?>
 
 <head>
@@ -26,7 +29,7 @@
 		}
 
 		// sql to delete a record
-		$sql = "UPDATE users SET username='$updateusername', password = MD5('$updatepassword') WHERE uid='$idadmin'";
+		$sql = "UPDATE users SET username='$updateusername', password = MD5('$updatepassword'), bsl='$updatebsl', virtua='$updatevirtua', selecta='$updateselecta' WHERE uid='$idadmin'";
 
 		if (mysqli_query($db, $sql)) {
 			?>

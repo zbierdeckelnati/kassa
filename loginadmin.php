@@ -56,7 +56,22 @@
 				<?php
 			}else
 			{
-				$error = "Incorrect username or password.";
+								?>
+				<script>
+				setTimeout(function () { 
+				swal({
+				  title: "Login gescheitert",
+				  text: "Kontrollieren Sie Ihren Username und das Passwort!",
+				  type: "warning",
+				  confirmButtonText: "OK"
+				},
+				function(isConfirm){
+				  if (isConfirm) {
+					window.location.href = "kassa.php";
+				  }
+				}); }, 0);
+				</script>
+				<?php
 			}
 
 		}

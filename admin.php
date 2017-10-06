@@ -87,9 +87,9 @@
 						<tr style="height: 65px">
 						<td style="vertical-align: middle;"><form action="adminedit.php" method="post"><input id="username" type="text" class="form-control" name="updateusername" value="<?php echo $row['username'] ?>"></td>
 						<td style="vertical-align: middle;"><input id="password" type="text" class="form-control" name="updatepassword" value="<?php echo $row['password'] ?>"></td>
-						<td style="vertical-align: middle;"><div class="checkbox"><label><input type="checkbox" value="">BSL Mitarbeiter</label></div>
-															<div class="checkbox"><label><input type="checkbox" value="">Virtua</label></div>
-															<div class="checkbox"><label><input type="checkbox" value="">Selecta</label></div>
+						<td style="vertical-align: middle;"><div class="checkbox"><label><input type="checkbox" value="ja" name="updatebsl" <?php echo ($row['bsl']=='ja' ? 'checked' : '');?>>BSL Mitarbeiter</label></div>
+															<div class="checkbox"><label><input type="checkbox" value="ja" name="updatevirtua" <?php echo ($row['virtua']=='ja' ? 'checked' : '');?>>Virtua</label></div>
+															<div class="checkbox"><label><input type="checkbox" value="ja" name="updateselecta" <?php echo ($row['selecta']=='ja' ? 'checked' : '');?>>Selecta</label></div>
 						</td>
 						<td style="vertical-align: middle;"><input type="radio" value="<?php echo $row['uid'] ?>" name="idadmin" checked="checked"><button type="submit" class="btn btn-default">Edit</button></form><br><form action="admindelete.php" method="post"><input type="radio" value="<?php echo $row['uid'] ?>" name="idadmin" checked="checked"><button type="submit" class="btn btn-default">Delete</button></form></td>
 					</tr>

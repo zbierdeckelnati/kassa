@@ -30,6 +30,20 @@
 		border-radius: 0px;
 	}
   </style>
+    <div style="display: none;">
+  <?php
+	$sql="SELECT bsl, virtua, selecta FROM users WHERE username = '$login_user'";
+	$result_set=mysqli_query($db, $sql);
+	while ($row = mysqli_fetch_assoc($result_set))
+	{?>
+	<?php $bsl = $row['bsl']; ?> <br>
+	<?php $virtua = $row['virtua']; ?> <br>
+	<?php $selecta = $row['selecta']; ?> <br>
+	<?php 
+	}
+
+?>
+</div>
 </head>
 <body>
 
@@ -48,9 +62,15 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kassa auswählen <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="bslmitarbeiter.php">BSL Mitarbeiter</a></li>
-            <li><a href="virtua.php">Virtua</a></li>
-            <li><a href="#">Selecta</a></li>
+            <?php
+			if ($bsl == "ja") {
+				echo "<li><a href='bslmitarbeiter.php'>BSL Mitarbeiter</a></li>";
+			} if ($virtua == "ja") {
+				echo "<li><a href='virtua.php'>Virtua</a></li>";
+			} if ($selecta == "ja") {
+				echo "<li><a href='#'>Selecta</a></li>";
+			}
+			?> 
           </ul>
         </li>
         <li><a href="#">Profil</a></li>
