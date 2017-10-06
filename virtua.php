@@ -128,7 +128,7 @@
 							<td style="vertical-align: middle;"><?php echo $row['soll'] ?></td>
 							<td style="vertical-align: middle;"><?php echo $row['haben'] ?></td>
 							<td style="vertical-align: middle;"><a href="uploads/<?php echo $row['file'] ?>">Beleg anzeigen</a></td>
-							<td style="vertical-align: middle;"><form action="toedit.php" method="post"><button type="submit" class="btn btn-default">Edit</button></td>
+							<td style="vertical-align: middle;"><form action="todelete.php" method="post"><input type="radio" value="<?php echo $row['id'] ?>" name="iddelete" checked="checked"></input><input type="radio" value="<?php echo $datenbankname ?>" name="datenbankname" checked="checked"></input><button type="submit" class="btn btn-default">Delete</button></form><form action="toedit.php" method="post"><button type="submit" class="btn btn-default">Edit</button></td>
 							<td style="vertical-align: middle;"><input type="radio" value="<?php echo $row['id'] ?>" name="idedit" checked="checked"></input>
 							<input type="radio" value="<?php echo $datenbankname ?>" name="datenbankname" checked="checked"></input></form></td>
 						</tr>

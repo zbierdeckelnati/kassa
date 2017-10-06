@@ -2,9 +2,17 @@
 
 	//error_reporting(0);
 	
-	//include("check.php");
-	include("connection.php");		
+	include("login.php");
+	include("connection.php");	
+
+		if ((isset($_SESSION['username']) != '')) 
+		{
+		header('Location: kassa.php');
+		}
 ?>
+	
+
+
 
 <!DOCTYPE html>
 <html lang="de">
