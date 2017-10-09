@@ -112,10 +112,11 @@
 			  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">PDF erstellen
 			  <span class="caret"></span></button>
 			  <ul class="dropdown-menu">
-				<form id="1quartal" action="zahlungausgabe.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('1quartal').submit();">1. Quartal</a></li></form>
-				<form id="2quartal" action="zahlungausgabe.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('2quartal').submit();">2. Quartal</a></li></form>
-				<form id="3quartal" action="zahlungausgabe.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('3quartal').submit();">3. Quartal</a></li></form>
-				<form id="4quartal" action="zahlungausgabe.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('4quartal').submit();">4. Quartal</a></li></form>
+				<form id="1quartal" action="quartal1.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('1quartal').submit();">1. Quartal</a></li></form>
+				<form id="2quartal" action="quartal2.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('2quartal').submit();">2. Quartal</a></li></form>
+				<form id="3quartal" action="quartal3.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('3quartal').submit();">3. Quartal</a></li></form>
+				<form id="4quartal" action="quartal4.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('4quartal').submit();">4. Quartal</a></li></form>
+				<form id="jahr" action="jahr.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('jahr').submit();">Ganzes Jahr</a></li></form>
 			  </ul>
 			</div> 
 		<hr>
@@ -136,6 +137,7 @@
 				<table class="table table-bordered">
 				<thead>
 				<tr>
+					<th>Datum</th>
 					<th id="thbeschreibung">Beschreibung</th>
 					<th>Soll</th>
 					<th>Haben</th>
@@ -157,6 +159,7 @@
 					?>
 						<tbody>
 						<tr style="height: 65px">
+							<td style="vertical-align: middle;"><?php echo $row['datum'] ?></td>
 							<td id="tdbeschreibung" style="vertical-align: middle;"><?php echo $row['beschreibung'] ?></td>
 							<td style="vertical-align: middle;"><?php echo $row['soll'] ?></td>
 							<td style="vertical-align: middle;"><?php echo $row['haben'] ?></td>

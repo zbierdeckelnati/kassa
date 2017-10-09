@@ -3,12 +3,13 @@
  {  
       $output = '';  
       $conn = mysqli_connect("localhost", "root", "", "kassa");  
-      $sql = "SELECT * FROM bslmitarbeiter ORDER BY id ASC";  
+      $sql = "SELECT * FROM bslmitarbeiter ORDER BY datum";  
       $result = mysqli_query($conn, $sql);  
       while($row = mysqli_fetch_array($result))  
       {       
       $output .= '<tr>  
-                          <td>'.$row["id"].'</td>  
+                          <td>'.$row["id"].'</td>
+						  <td>'.$row["datum"].'</td>  
 						  <td>'.$row["beschreibung"].'</td>  
                           <td>'.$row["soll"].'</td>  
                           <td>'.$row["haben"].'</td>  
@@ -39,10 +40,11 @@
       <h4 align="center">Generate HTML Table Data To PDF From MySQL Database Using TCPDF In PHP</h4><br /> 
       <table border="1" cellspacing="0" cellpadding="3">  
            <tr>  
-                <th width="5%">Id</th>  
-                <th width="30%">Beschreibung</th>  
+                <th width="5%">Id</th>
+			    <th width="25%">Datum</th>  				
+                <th width="40%">Beschreibung</th>  
                 <th width="15%">Soll</th>  
-                <th width="50%">Haben</th>  
+                <th width="15%">Haben</th>  
            </tr>  
       ';  
       $content .= fetch_data();  
