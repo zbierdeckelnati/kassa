@@ -82,13 +82,6 @@ if (!$result) {
     echo 'MySQL Error: ' . mysql_error();
     exit;
 }
-
-while ($row = mysqli_fetch_row($result)) {
-    echo "Table: {$row[0]}\n";
-}
-
-mysqli_free_result($result);
-
 ?>
 
 <nav class="navbar navbar-inverse">
@@ -106,15 +99,24 @@ mysqli_free_result($result);
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kassa auswählen <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <?php
-			if ($bsl == "ja") {
-				echo "<li><a href='bslmitarbeiter.php'>BSL Mitarbeiter</a></li>";
-			} if ($virtua == "ja") {
-				echo "<li><a href='virtua.php'>Virtua</a></li>";
-			} if ($selecta == "ja") {
-				echo "<li><a href='#'>Selecta</a></li>";
+		  
+		  <?php
+			while ($row = mysqli_fetch_row($result)) {
+				?><li><a href="echo <?php $row[0];?>.php"></a><?php echo $row[0];?></li><?php
 			}
-			?> 
+
+			mysqli_free_result($result);
+
+			?>
+            <?php
+			// if ($bsl == "ja") {
+				// echo "<li><a href='bslmitarbeiter.php'>BSL Mitarbeiter</a></li>";
+			// } if ($virtua == "ja") {
+				// echo "<li><a href='virtua.php'>Virtua</a></li>";
+			// } if ($selecta == "ja") {
+				// echo "<li><a href='#'>Selecta</a></li>";
+			// }
+			// ?> 
           </ul>
         </li>
         <li><a href="#">Profil</a></li>

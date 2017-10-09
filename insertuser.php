@@ -18,14 +18,14 @@
 	$selecta = $_POST['selecta'];
 	
 	// Check connection
-	if (!$db) {
+	if (!$db_users) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
 	$sql = "INSERT INTO users (username, password, bsl, virtua, selecta)
 	VALUES ('$username', MD5('$password'), '$bsl', '$virtua', '$selecta')";
 
-	if (mysqli_query($db_kassa, $sql)) {
+	if (mysqli_query($db_users, $sql)) {
 					?>
 			<script>
 				setTimeout(function () { 
@@ -61,7 +61,7 @@
 			<?php
 	}
 
-	mysqli_close($db);
+	mysqli_close($db_users);
 ?>
 </body>
 

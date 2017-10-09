@@ -19,7 +19,7 @@
 <body>
 	<?php
 		// Check connection
-		if (!$db) {
+		if (!$db_users) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
 
