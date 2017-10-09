@@ -84,6 +84,7 @@ if (!$result) {
 }
 ?>
 
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -99,14 +100,14 @@ if (!$result) {
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kassa auswählen <span class="caret"></span></a>
           <ul class="dropdown-menu">
-		  
 		  <?php
 			while ($row = mysqli_fetch_row($result)) {
-				?><li><a href="echo <?php $row[0];?>.php"></a><?php echo $row[0];?></li><?php
+				?>
+
+		  
+			<li><a href="<?php echo $row[0];?>.php"><?php echo $row[0];?></a></li><?php
 			}
-
 			mysqli_free_result($result);
-
 			?>
             <?php
 			// if ($bsl == "ja") {
@@ -128,7 +129,10 @@ if (!$result) {
   </div>
 </nav>
 
+			
+
 <?php
+
 	$datenbankname = basename(__FILE__, '.php');
 ?>
   
