@@ -76,7 +76,7 @@
 		<?phpecho $idedit;?>
 			<?php
 			$sql="SELECT * FROM $datenbankname WHERE id = '$idedit'";
-			$result_set=mysqli_query($db, $sql);
+			$result_set=mysqli_query($db_kassa, $sql);
 			while($row=mysqli_fetch_array($result_set))
 			{
 			?>

@@ -30,13 +30,13 @@
 	size INT(11) NOT NULL
 	)";
 
-	if (mysqli_query($db, $sql)) {
+	if (mysqli_query($db_kassa, $sql)) {
 		echo "Table MyGuests created successfully";
 	} else {
-		echo "Error creating table: " . mysqli_error($db);
+		echo "Error creating table: " . mysqli_error($db_kassa);
 	}
 
-	mysqli_close($db);
+	mysqli_close($db_kassa);
 	?>
 </body>
 

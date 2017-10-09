@@ -12,6 +12,7 @@
 	include_once 'connection.php';
 
 	$datenbank = $_POST['datenbank'];
+	$datum = $_POST['datum'];
 	$beschreibung = $_POST['beschreibung'];
 	$soll = $_POST['soll'];
 	$haben = $_POST['haben'];
@@ -34,8 +35,8 @@
 		
 		if(move_uploaded_file($file_loc,$folder.$final_file))
 		{
-			$sql="INSERT INTO $datenbank(file,type,size, beschreibung, soll, haben) VALUES('$final_file','$file_type','$new_size', '$beschreibung', '$soll', '$haben')";
-			mysqli_query($db, $sql);
+			$sql="INSERT INTO $datenbank(file,type,size, beschreibung, soll, haben, datum) VALUES('$final_file','$file_type','$new_size', '$datum', '$beschreibung', '$soll', '$haben')";
+			mysqli_query($db_kassa, $sql);
 			?>
 			<script>
 				setTimeout(function () { 

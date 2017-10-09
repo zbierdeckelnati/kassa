@@ -31,7 +31,7 @@
 		// sql to delete a record
 		$sql = "UPDATE users SET username='$updateusername', password = MD5('$updatepassword'), bsl='$updatebsl', virtua='$updatevirtua', selecta='$updateselecta' WHERE uid='$idadmin'";
 
-		if (mysqli_query($db, $sql)) {
+		if (mysqli_query($db_users, $sql)) {
 			?>
 				<script>
 				setTimeout(function () { 
@@ -67,7 +67,7 @@
 			<?php
 		}
 
-		mysqli_close($db);
+		mysqli_close($db_users);
 	?>
 </body>
 

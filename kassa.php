@@ -3,7 +3,7 @@
 	//error_reporting(0);
 	
 	include("check.php");
-	include("connection.php");		
+	include("connection.php");
 ?>
 
 
@@ -37,7 +37,7 @@
   <div style="display: none;">
   <?php
 	$sql="SELECT bsl, virtua, selecta FROM users WHERE username = '$login_user'";
-	$result_set=mysqli_query($db, $sql);
+	$result_set=mysqli_query($db_users, $sql);
 	while ($row = mysqli_fetch_assoc($result_set))
 	{?>
 	<?php $bsl = $row['bsl']; ?> <br>
@@ -105,7 +105,7 @@
 					
 					<div class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-						<input id="datum" type="text" class="form-control" name="datum" placeholder="Datum" required>
+						<input id="datum" type="text" class="form-control" name="datum" placeholder="Datum">
 					</div>
 					
 					<div class="input-group">

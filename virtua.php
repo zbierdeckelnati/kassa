@@ -3,7 +3,7 @@
 	//error_reporting(0);
 	
 	include("check.php");
-	include("connection.php");		
+	include("connection.php");	
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +52,7 @@
     <div style="display: none;">
   <?php
 	$sql="SELECT bsl, virtua, selecta FROM users WHERE username = '$login_user'";
-	$result_set=mysqli_query($db, $sql);
+	$result_set=mysqli_query($db_users, $sql);
 	while ($row = mysqli_fetch_assoc($result_set))
 	{?>
 	<?php $bsl = $row['bsl']; ?> <br>
@@ -124,7 +124,7 @@
 				<?php
 
 				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM $datenbankname;";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
 					<h3>Gesamtsumme: <?php echo $row['totalsollhaben']; ?> CHF</h3>
@@ -136,6 +136,7 @@
 				<table class="table table-bordered">
 				<thead>
 				<tr>
+					<th>Datum</th>
 					<th id="thbeschreibung">Beschreibung</th>
 					<th>Soll</th>
 					<th>Haben</th>
@@ -149,12 +150,13 @@
 				
 				<?php
 				$sql="SELECT * FROM virtua ORDER BY id DESC";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while($row=mysqli_fetch_array($result_set))
 				{
 					?>
 						<tbody>
 						<tr style="height: 65px">
+							<td style="vertical-align: middle;"><?php echo $row['datum'] ?></td>
 							<td id="tdbeschreibung" style="vertical-align: middle;"><?php echo $row['beschreibung'] ?></td>
 							<td style="vertical-align: middle;"><?php echo $row['soll'] ?></td>
 							<td style="vertical-align: middle;"><?php echo $row['haben'] ?></td>
@@ -171,18 +173,19 @@
 				<?php
 
 				$sql="SELECT sum(soll) as totalsoll FROM virtua";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
 				<tfoot>
 				<tr id="summe">
+				<th></th>
 				<th>Summe</th>
 					<th><?php echo $row['totalsoll']; ?> CHF</th>
 				  <?php 
 				}
 				
 				$sql="SELECT sum(haben) as totalhaben FROM virtua";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
 					<th><?php echo $row['totalhaben']; ?> CHF</th>
@@ -195,7 +198,7 @@
 				<?php
 
 				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM virtua";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
 					<th><?php echo $row['totalsollhaben']; ?> CHF</th>
@@ -203,7 +206,8 @@
 				}
 				
 				
-				mysqli_close($db);
+				mysqli_close($db_kassa);
+				mysqli_close($db_users);
 				?>
 
 				</tr>

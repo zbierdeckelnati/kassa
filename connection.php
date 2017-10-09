@@ -2,6 +2,8 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "kassa";
+$dbname_kassa = "kassa";
+$dbname_users = "users";
 
-$db = mysqli_connect($servername, $username, $password, $dbname);
+$db_kassa = mysqli_connect($servername, $username, $password, $dbname_kassa);
+$db_users = mysqli_connect($servername, $username, $password, $dbname_users);

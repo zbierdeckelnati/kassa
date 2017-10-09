@@ -29,7 +29,7 @@
 		// sql to delete a record
 		$sql = "DELETE FROM $datenbankname WHERE id='$iddelete'";
 
-		if (mysqli_query($db, $sql)) {
+		if (mysqli_query($db_kassa, $sql)) {
 			?>
 				<script>
 				setTimeout(function () { 
@@ -65,7 +65,7 @@
 			<?php
 		}
 
-		mysqli_close($db);
+		mysqli_close($db_kassa);
 	?>
 </body>
 

@@ -25,13 +25,13 @@
 			
 			$username = stripslashes($username);
 			$password = stripslashes($password);
-			$username = mysqli_real_escape_string($db, $username);
-			$password = mysqli_real_escape_string($db, $password);
+			$username = mysqli_real_escape_string($db_users, $username);
+			$password = mysqli_real_escape_string($db_users, $password);
 			$password = md5($password);
 			
 			
 			$sql="SELECT uid FROM usersadmin WHERE username='$username' and password='$password'";
-			$result=mysqli_query($db,$sql);
+			$result=mysqli_query($db_users,$sql);
 			$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 			
 			

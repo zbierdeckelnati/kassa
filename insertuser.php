@@ -25,7 +25,7 @@
 	$sql = "INSERT INTO users (username, password, bsl, virtua, selecta)
 	VALUES ('$username', MD5('$password'), '$bsl', '$virtua', '$selecta')";
 
-	if (mysqli_query($db, $sql)) {
+	if (mysqli_query($db_kassa, $sql)) {
 					?>
 			<script>
 				setTimeout(function () { 

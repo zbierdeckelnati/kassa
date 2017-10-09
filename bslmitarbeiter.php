@@ -3,7 +3,7 @@
 	//error_reporting(0);
 	
 	include("check.php");
-	include("connection.php");			
+	include("connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +52,7 @@
     <div style="display: none;">
   <?php
 	$sql="SELECT bsl, virtua, selecta FROM users WHERE username = '$login_user'";
-	$result_set=mysqli_query($db, $sql);
+	$result_set=mysqli_query($db_users, $sql);
 	while ($row = mysqli_fetch_assoc($result_set))
 	{?>
 	<?php $bsl = $row['bsl']; ?> <br>
@@ -65,6 +65,31 @@
 </div>
 </head>
 <body>
+
+<?php
+$dbname = 'kassa';
+
+if (!mysqli_connect('localhost', 'root', '')) {
+    echo 'Could not connect to mysql';
+    exit;
+}
+
+$sql = "SHOW TABLES FROM $dbname";
+$result = mysqli_query($db_kassa, $sql);
+
+if (!$result) {
+    echo "DB Error, could not list tables\n";
+    echo 'MySQL Error: ' . mysql_error();
+    exit;
+}
+
+while ($row = mysqli_fetch_row($result)) {
+    echo "Table: {$row[0]}\n";
+}
+
+mysqli_free_result($result);
+
+?>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -124,7 +149,7 @@
 		<?php
 
 				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM $datenbankname;";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
 					<h3>Gesamtsumme: <?php echo $row['totalsollhaben']; ?> CHF</h3>
@@ -153,7 +178,7 @@
 				
 				<?php
 				$sql="SELECT * FROM bslmitarbeiter ORDER BY id DESC";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while($row=mysqli_fetch_array($result_set))
 				{
 					?>
@@ -176,18 +201,19 @@
 				<?php
 
 				$sql="SELECT sum(soll) as totalsoll FROM bslmitarbeiter";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
 				<tfoot>
 				<tr id="summe">
+				<th></th>
 				<th>Summe</th>
 					<th><?php echo $row['totalsoll']; ?> CHF</th>
 				  <?php 
 				}
 				
 				$sql="SELECT sum(haben) as totalhaben FROM bslmitarbeiter";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
 					<th><?php echo $row['totalhaben']; ?> CHF</th>
@@ -200,7 +226,7 @@
 				<?php
 
 				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM bslmitarbeiter";
-				$result_set=mysqli_query($db, $sql);
+				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
 					<th><?php echo $row['totalsollhaben']; ?> CHF</th>
@@ -208,7 +234,8 @@
 				}
 				
 				
-				mysqli_close($db);
+				mysqli_close($db_kassa);
+				mysqli_close($db_users);
 				?>
 
 				</tr>

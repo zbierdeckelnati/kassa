@@ -26,7 +26,7 @@
 		// sql to delete a record
 		$sql = "DELETE FROM users WHERE uid='$idadmin'";
 
-		if (mysqli_query($db, $sql)) {
+		if (mysqli_query($db_users, $sql)) {
 			?>
 				<script>
 				setTimeout(function () { 
@@ -62,7 +62,7 @@
 			<?php
 		}
 
-		mysqli_close($db);
+		mysqli_close($db_users);
 	?>
 </body>
 
