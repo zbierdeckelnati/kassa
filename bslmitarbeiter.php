@@ -3,7 +3,7 @@
 	//error_reporting(0);
 	
 	include("check.php");
-	include("connection.php");		
+	include("connection.php");			
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +29,25 @@
 	nav.navbar {
 		border-radius: 0px;
 	}
+	
+	li#quartal a {
+		display: block;
+		padding: 3px 20px;
+		clear: both;
+		font-weight: 400;
+		line-height: 1.42857143;
+		color: #333;
+		white-space: nowrap;
+		text-decoration: none;
+	}
+	
+	li#quartal:hover {
+		color: #262626;
+		text-decoration: none;
+		background-color: #f5f5f5;		
+	}
+
+	
   </style>
     <div style="display: none;">
   <?php
@@ -88,6 +107,17 @@
   
 <div class="container">
   		<h2> Kassa: <?php echo $datenbankname; ?> </h2>
+            
+			 <div class="dropdown"> 
+			  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">PDF erstellen
+			  <span class="caret"></span></button>
+			  <ul class="dropdown-menu">
+				<form id="1quartal" action="zahlungausgabe.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('1quartal').submit();">1. Quartal</a></li></form>
+				<form id="2quartal" action="zahlungausgabe.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('2quartal').submit();">2. Quartal</a></li></form>
+				<form id="3quartal" action="zahlungausgabe.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('3quartal').submit();">3. Quartal</a></li></form>
+				<form id="4quartal" action="zahlungausgabe.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('4quartal').submit();">4. Quartal</a></li></form>
+			  </ul>
+			</div> 
 		<hr>
 		
 		<?php
