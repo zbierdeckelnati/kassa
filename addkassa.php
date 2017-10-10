@@ -72,36 +72,17 @@
 </nav>
   
 <div class="container">
-  		<h2> Neuer User hinzufügen </h2>
+  		<h2> Neue Kassa hinzufügen </h2>
 		<hr>
 		<h3> </h3>
 		
-		<form action="insertuser.php" method="post" enctype="multipart/form-data">
+		<form action="insertkassa.php" method="post" enctype="multipart/form-data">
 					<div class="input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-						<input id="username" type="text" class="form-control" name="username" placeholder="Username" required>
+						<span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span>
+						<input id="kassa" type="text" class="form-control" name="kassa" placeholder="Kassa" required>
 					</div>
-					
-					<div class="input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-						<input id="password" type="password" class="form-control" name="password" placeholder="Passwort" required>
-					</div>
-					
-					<label>Kasse auswählen</label>
-					<div class="checkbox">
-						<label><input type="checkbox" value="ja" name="bsl">BSL Mitarbeiter</label>
-					</div>
-					
-					<div class="checkbox">
-						<label><input type="checkbox" value="ja" name="virtua">Virtua</label>
-					</div>
-					
-					<div class="checkbox">
-						<label><input type="checkbox" value="ja" name="selecta">Selecta</label>
-					</div>
-					
-									
-					<button type="submit" name="btn-upload" class="btn btn-default">User aufnehmen</button>
+										
+					<button type="submit" name="btn-upload" class="btn btn-default">Kassa aufnehmen</button>
 				</form>
 
 				</div>

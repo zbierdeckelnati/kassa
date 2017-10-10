@@ -46,8 +46,6 @@
 		text-decoration: none;
 		background-color: #f5f5f5;		
 	}
-
-	
   </style>
     <div style="display: none;">
   <?php

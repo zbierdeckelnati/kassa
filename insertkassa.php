@@ -14,7 +14,7 @@
 	$kassa = $_POST['kassa'];
 	
 	// Check connection
-	if (!$db) {
+	if (!$db_kassa) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
@@ -37,7 +37,32 @@
 	}
 
 	mysqli_close($db_kassa);
-	?>
+	
+	
+	// Check connection
+	if (!$db_users) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
+	// sql to create table
+	$sql = "ALTER TABLE `users` ADD `$kassa` VARCHAR(255) NOT NULL AFTER `selecta`;";
+
+	if (mysqli_query($db_users, $sql)) {
+		echo "Table MyGuests created successfully";
+	} else {
+		echo "Error creating table: " . mysqli_error($db_kassa);
+	}
+
+	mysqli_close($db_users);
+	
+	$myfile = fopen("$kassa.php", "w") or die("Unable to open file!");
+	$txt = "John Doe\n";
+	fwrite($myfile, $txt);
+	$txt = "Jane Doe\n";
+	fwrite($myfile, $txt);
+	fclose($myfile);
+	?> 
+	
 </body>
 
 </html>
