@@ -22,7 +22,7 @@
 <body>
 	<?php
 		// Check connection
-		if (!$db) {
+		if (!$db_kassa) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
 

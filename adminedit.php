@@ -24,12 +24,12 @@
 <body>
 	<?php
 		// Check connection
-		if (!$db) {
+		if (!$db_users) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
 
 		// sql to delete a record
-		$sql = "UPDATE users SET username='$updateusername', password = MD5('$updatepassword'), bsl='$updatebsl', virtua='$updatevirtua', selecta='$updateselecta' WHERE uid='$idadmin'";
+		$sql = "UPDATE users SET username='$updateusername', password = MD5('$updatepassword'), bslmitarbeiter='$updatebsl', virtua='$updatevirtua', selecta='$updateselecta' WHERE uid='$idadmin'";
 
 		if (mysqli_query($db_users, $sql)) {
 			?>

@@ -56,12 +56,6 @@
             <li><a href="adduser.php">User hinzufügen</a></li>
           </ul>
         </li>
-		<li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kassa <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="addkassa.php">Kassa hinzufügen</a></li>
-          </ul>
-        </li>
         <li><a href="#">Profil</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -89,7 +83,7 @@
 					
 					<label>Kasse auswählen</label>
 					<div class="checkbox">
-						<label><input type="checkbox" value="ja" name="bsl">BSL Mitarbeiter</label>
+						<label><input type="checkbox" value="ja" name="bslmitarbeiter">BSL Mitarbeiter</label>
 					</div>
 					
 					<div class="checkbox">
@@ -99,6 +93,8 @@
 					<div class="checkbox">
 						<label><input type="checkbox" value="ja" name="selecta">Selecta</label>
 					</div>
+					
+		
 					
 									
 					<button type="submit" name="btn-upload" class="btn btn-default">User aufnehmen</button>

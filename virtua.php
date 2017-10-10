@@ -51,16 +51,15 @@
   </style>
     <div style="display: none;">
   <?php
-	$sql="SELECT bsl, virtua, selecta FROM users WHERE username = '$login_user'";
+	$sql="SELECT bslmitarbeiter, virtua, selecta FROM users WHERE username = '$login_user'";
 	$result_set=mysqli_query($db_users, $sql);
 	while ($row = mysqli_fetch_assoc($result_set))
 	{?>
-	<?php $bsl = $row['bsl']; ?> <br>
+	<?php $bsl = $row['bslmitarbeiter']; ?> <br>
 	<?php $virtua = $row['virtua']; ?> <br>
 	<?php $selecta = $row['selecta']; ?> <br>
 	<?php 
 	}
-
 ?>
 </div>
 </head>
@@ -112,11 +111,11 @@
 			  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">PDF erstellen
 			  <span class="caret"></span></button>
 			  <ul class="dropdown-menu">
-				<form id="1quartal" action="quartal1.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('1quartal').submit();">1. Quartal</a></li></form>
-				<form id="2quartal" action="quartal2.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('2quartal').submit();">2. Quartal</a></li></form>
-				<form id="3quartal" action="quartal3.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('3quartal').submit();">3. Quartal</a></li></form>
-				<form id="4quartal" action="quartal4.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('4quartal').submit();">4. Quartal</a></li></form>
-				<form id="jahr" action="jahr.php" method="post"><input type="hidden" name="generate_pdf" /><li id="quartal"><a href="#" onclick="document.getElementById('jahr').submit();">Ganzes Jahr</a></li></form>
+				<form id="1quartal" action="quartal1.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamequartal1" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('1quartal').submit();">1. Quartal</a></li></form>
+				<form id="2quartal" action="quartal2.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamequartal2" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('2quartal').submit();">2. Quartal</a></li></form>
+				<form id="3quartal" action="quartal3.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamequartal3" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('3quartal').submit();">3. Quartal</a></li></form>
+				<form id="4quartal" action="quartal4.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamequartal4" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('4quartal').submit();">4. Quartal</a></li></form>
+				<form id="jahr" action="jahr.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamejahr" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('jahr').submit();">Ganzes Jahr</a></li></form>
 			  </ul>
 			</div> 
 		<hr>

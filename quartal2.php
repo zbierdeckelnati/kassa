@@ -4,9 +4,10 @@ $pdfAuthor = "BSL";
 
 function fetch_data()  
  {  
-      $output = '';  
+      $datenbank = $_POST["datenbanknamequartal2"];
+	  $output = '';  
       $conn = mysqli_connect("localhost", "root", "", "kassa");  
-      $sql = "SELECT * FROM bslmitarbeiter WHERE MONTH(datum) = 04 OR MONTH(datum) = 05 OR MONTH(datum) = 06 ORDER BY datum";  
+      $sql = "SELECT * FROM $datenbank WHERE MONTH(datum) = 04 OR MONTH(datum) = 05 OR MONTH(datum) = 06 ORDER BY datum";  
       $result = mysqli_query($conn, $sql);  
       while($row = mysqli_fetch_array($result))  
       {       

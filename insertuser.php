@@ -13,7 +13,7 @@
 
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$bsl = $_POST['bsl'];
+	$bslmitarbeiter = $_POST['bslmitarbeiter'];
 	$virtua = $_POST['virtua'];
 	$selecta = $_POST['selecta'];
 	
@@ -22,8 +22,8 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
-	$sql = "INSERT INTO users (username, password, bsl, virtua, selecta)
-	VALUES ('$username', MD5('$password'), '$bsl', '$virtua', '$selecta')";
+	$sql = "INSERT INTO users (username, password, bslmitarbeiter, virtua, selecta)
+	VALUES ('$username', MD5('$password'), '$bslmitarbeiter', '$virtua', '$selecta')";
 
 	if (mysqli_query($db_users, $sql)) {
 					?>

@@ -34,79 +34,22 @@
 		border-radius: 0px;
 	}
   </style>
-  
-
-  
-  <div>
-    <?php
-	
-	$asd="SELECT bslmitarbeiter FROM zugriff";
-	$abfrage=mysqli_query($db_users, $asd);
-	
-	$dbname = 'kassa';
-
-	if (!mysqli_connect('localhost', 'root', '')) {
-		echo 'Could not connect to mysql';
-		exit;
+    <div style="display: none;">
+  <?php
+	$sql="SELECT bslmitarbeiter, virtua, selecta FROM users WHERE username = '$login_user'";
+	$result_set=mysqli_query($db_users, $sql);
+	while ($row = mysqli_fetch_assoc($result_set))
+	{?>
+	<?php $bsl = $row['bslmitarbeiter']; ?> <br>
+	<?php $virtua = $row['virtua']; ?> <br>
+	<?php $selecta = $row['selecta']; ?> <br>
+	<?php 
 	}
 
-	$sql = "SHOW TABLES FROM $dbname";
-	$result = mysqli_query($db_kassa, $sql);
-
-	if (!$result) {
-		echo "DB Error, could not list tables\n";
-		echo 'MySQL Error: ' . mysql_error();
-		exit;
-	}
-	
-	$value = array();
-	while ($rs = mysqli_fetch_row($result) OR $row = mysqli_fetch_assoc($abfrage)) {
-	?>
-	
-
-	<?php
-	
-	$value = $rs[0];
-	$string= $row[$value];
-	
-	if ($string == "ja") {
-				echo "<li><a href='bslmitarbeiter.php'>BSL Mitarbeiter</a></li>";
-			} if ($value == "ja") {
-				echo "<li><a href='virtua.php'>Virtua</a></li>";
-			} if ($value == "ja") {
-				echo "<li><a href='#'>Selecta</a></li>";
-			}
-	
-	
-	
-		
-	}
-	
-	mysqli_free_result($result);
-	?>
-	
-
+?>
 </div>
 </head>
 <body>
-
-<?php
-$dbname = 'kassa';
-
-if (!mysqli_connect('localhost', 'root', '')) {
-    echo 'Could not connect to mysql';
-    exit;
-}
-
-$sql = "SHOW TABLES FROM $dbname";
-$result = mysqli_query($db_kassa, $sql);
-
-if (!$result) {
-    echo "DB Error, could not list tables\n";
-    echo 'MySQL Error: ' . mysql_error();
-    exit;
-}
-?>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -124,25 +67,15 @@ if (!$result) {
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kassa auswählen <span class="caret"></span></a>
           <ul class="dropdown-menu">
 		  
-		  <?php
-			while ($row = mysqli_fetch_row($result)) {
-				?>
-
-		  
-			<li><a href="<?php echo $row[0];?>.php"><?php echo $row[0];?></a></li><?php
+	         <?php
+			if ($bsl == "ja") {
+				echo "<li><a href='bslmitarbeiter.php'>BSL Mitarbeiter</a></li>";
+			} if ($virtua == "ja") {
+				echo "<li><a href='virtua.php'>Virtua</a></li>";
+			} if ($selecta == "ja") {
+				echo "<li><a href='#'>Selecta</a></li>";
 			}
-			mysqli_free_result($result);
-			?>
-			<?php
-			
-			// if ($bsl == "ja") {
-				// echo "<li><a href='bslmitarbeiter.php'>BSL Mitarbeiter</a></li>";
-			// } if ($virtua == "ja") {
-				// echo "<li><a href='virtua.php'>Virtua</a></li>";
-			// } if ($selecta == "ja") {
-				// echo "<li><a href='#'>Selecta</a></li>";
-			// }
-			// ?> 
+			?> 
           </ul>
         </li>
         <li><a href="#">Profil</a></li>

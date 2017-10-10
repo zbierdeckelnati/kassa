@@ -51,12 +51,6 @@
             <li><a href="adduser.php">User hinzufügen</a></li>
           </ul>
         </li>
-		<li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kassa <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="addkassa.php">Kassa hinzufügen</a></li>
-          </ul>
-        </li>
         <li><a href="#">Profil</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -91,7 +85,7 @@
 						<tr style="height: 65px">
 						<td style="vertical-align: middle;"><form action="adminedit.php" method="post"><input id="username" type="text" class="form-control" name="updateusername" value="<?php echo $row['username'] ?>"></td>
 						<td style="vertical-align: middle;"><input id="password" type="text" class="form-control" name="updatepassword" value="<?php echo $row['password'] ?>"></td>
-						<td style="vertical-align: middle;"><div class="checkbox"><label><input type="checkbox" value="ja" name="updatebsl" <?php echo ($row['bsl']=='ja' ? 'checked' : '');?>>BSL Mitarbeiter</label></div>
+						<td style="vertical-align: middle;"><div class="checkbox"><label><input type="checkbox" value="ja" name="updatebsl" <?php echo ($row['bslmitarbeiter']=='ja' ? 'checked' : '');?>>BSL Mitarbeiter</label></div>
 															<div class="checkbox"><label><input type="checkbox" value="ja" name="updatevirtua" <?php echo ($row['virtua']=='ja' ? 'checked' : '');?>>Virtua</label></div>
 															<div class="checkbox"><label><input type="checkbox" value="ja" name="updateselecta" <?php echo ($row['selecta']=='ja' ? 'checked' : '');?>>Selecta</label></div>
 						</td>
