@@ -46,6 +46,14 @@
 		text-decoration: none;
 		background-color: #f5f5f5;		
 	}
+	
+	input#searching.form-control {
+		width: 35%;
+	}
+	
+	input#searching.form-control {
+		display: inline;
+	}
   </style>
     <div style="display: none;">
   <?php
@@ -123,9 +131,17 @@
 			</div> 
 		<hr>
 		
+		
+			
+		<form action="searching.php" method="post">
+			<input id="searching" type="text" class="form-control" name="searching" placeholder="Nach Datum suchen">
+			<button type="submit" class="btn btn-default">Suche</button>
+			
+		</form>
+		
 		<?php
 
-				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM $datenbankname;";
+				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM $datenbankname";
 				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
