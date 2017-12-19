@@ -67,39 +67,38 @@
 </nav>
   
 <div class="container">
-  		<h2> Neuer User hinzufügen </h2>
+  		<h2> Email versenden </h2>
 		<hr>
 		<h3> </h3>
 		
-		<form action="insertuser.php" method="post" enctype="multipart/form-data">
+		<form action="emailversenden.php" method="post" enctype="multipart/form-data">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-						<input id="username" type="text" class="form-control" name="username" placeholder="Username" required>
+						<input id="name" type="text" class="form-control" name="name" placeholder="Name" required>
 					</div>
 					
 					<div class="input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-						<input id="password" type="password" class="form-control" name="password" placeholder="Passwort" required>
+						<span class="input-group-addon"><i class="glyphicon glyphicon-send"></i></span>
+						<input id="email" type="text" class="form-control" name="email" placeholder="Email" required>
 					</div>
 					
-					<label>Kasse auswählen</label>
-					<div class="checkbox">
-						<label><input type="checkbox" value="ja" name="bslmitarbeiter">BSL Mitarbeiter</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
+						<input id="betreff" type="text" class="form-control" name="betreff" placeholder="Betreff" required>
 					</div>
 					
-					<div class="checkbox">
-						<label><input type="checkbox" value="ja" name="virtua">Virtua</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+						<input id="nachricht" type="text" class="form-control" name="nachricht" placeholder="Nachricht" required>
 					</div>
 					
-					<div class="checkbox">
-						<label><input type="checkbox" value="ja" name="selecta">Selecta</label>
-					</div>
+
 					
 		
 					
 									
 					<button type="submit" name="btn-upload" class="btn btn-default">User aufnehmen</button>
-				</form>
+		</form>
 
 				</div>
 

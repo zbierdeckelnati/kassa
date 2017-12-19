@@ -118,39 +118,24 @@
 <div class="container">
   		<h2> Kassa: <?php echo $datenbankname; ?> </h2>
             
-			 <div class="dropdown"> 
-			  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">PDF erstellen
-			  <span class="caret"></span></button>
-			  <ul class="dropdown-menu">
-				<form id="1quartal" action="quartal1.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamequartal1" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('1quartal').submit();">1. Quartal</a></li></form>
-				<form id="2quartal" action="quartal2.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamequartal2" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('2quartal').submit();">2. Quartal</a></li></form>
-				<form id="3quartal" action="quartal3.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamequartal3" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('3quartal').submit();">3. Quartal</a></li></form>
-				<form id="4quartal" action="quartal4.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamequartal4" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('4quartal').submit();">4. Quartal</a></li></form>
-				<form id="jahr" action="jahr.php" method="post"><input type="hidden" name="generate_pdf" /><input type="radio" value="<?php echo $datenbankname; ?>" name="datenbanknamejahr" checked="checked"></input><li id="quartal"><a href="#" onclick="document.getElementById('jahr').submit();">Ganzes Jahr</a></li></form>
-			  </ul>
-			</div> 
 		<hr>
 		
+		<?php 
+		
+		$searching = $_GET['searching'];
+			
+		?>
 		
 			
-		<form action="searching_bslmitarbeiter.php" method="get">
+		<form action="searching_virtua.php" method="get">
 			<input id="searching" type="text" class="form-control" name="searching" placeholder="Nach Datum suchen">
 			<button type="submit" class="btn btn-default">Suche</button>
 			
 		</form>
 		
-		<?php
-
-				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM $datenbankname";
-				$result_set=mysqli_query($db_kassa, $sql);
-				while ($row = mysqli_fetch_assoc($result_set))
-				{?>
-					<h3>Gesamtsumme: <?php echo $row['totalsollhaben']; ?> CHF</h3>
-				  <?php 
-				}
-				
-
-		?>
+		<br>
+		
+		<br>
 		
 				<table class="table table-bordered">
 				<thead>
@@ -170,7 +155,7 @@
 				?>
 				
 				<?php
-				$sql="SELECT * FROM bslmitarbeiter ORDER BY id DESC";
+				$sql="SELECT * FROM virtua WHERE datum = '$searching' ORDER BY id DESC";
 				$result_set=mysqli_query($db_kassa, $sql);
 				while($row=mysqli_fetch_array($result_set))
 				{
@@ -193,7 +178,7 @@
 				
 				<?php
 
-				$sql="SELECT sum(soll) as totalsoll FROM bslmitarbeiter";
+				$sql="SELECT sum(soll) as totalsoll FROM virtua WHERE datum = '$searching'";
 				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
@@ -205,7 +190,7 @@
 				  <?php 
 				}
 				
-				$sql="SELECT sum(haben) as totalhaben FROM bslmitarbeiter";
+				$sql="SELECT sum(haben) as totalhaben FROM virtua";
 				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>
@@ -218,7 +203,7 @@
 				
 				<?php
 
-				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM bslmitarbeiter";
+				$sql="SELECT sum(soll)-sum(haben) as totalsollhaben FROM virtua WHERE datum = '$searching'";
 				$result_set=mysqli_query($db_kassa, $sql);
 				while ($row = mysqli_fetch_assoc($result_set))
 				{?>

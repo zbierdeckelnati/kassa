@@ -49,6 +49,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">User <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="adduser.php">User hinzufügen</a></li>
+			<li><a href="email.php">Email versenden</a></li>
           </ul>
         </li>
         <li><a href="#">Profil</a></li>

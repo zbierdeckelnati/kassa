@@ -47,6 +47,14 @@
 		text-decoration: none;
 		background-color: #f5f5f5;		
 	}
+	
+		input#searching.form-control {
+		width: 35%;
+	}
+	
+	input#searching.form-control {
+		display: inline;
+	}
 
   </style>
     <div style="display: none;">
@@ -119,6 +127,13 @@
 			  </ul>
 			</div> 
 		<hr>
+		
+		
+		<form action="searching_virtua.php" method="get">
+			<input id="searching" type="text" class="form-control" name="searching" placeholder="Nach Datum suchen">
+			<button type="submit" class="btn btn-default">Suche</button>
+			
+		</form>
 		
 				<?php
 
