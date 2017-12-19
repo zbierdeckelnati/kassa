@@ -89,7 +89,11 @@
 				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 				<input id="password" type="password" class="form-control" name="password" placeholder="Passwort">
 			</div>
-
+			
+			<div class="input-group">
+			<label><input type="checkbox" name="angemeldet_bleiben" value="1">  Angemeldet bleiben</label><br>
+			</div>
+			
 			<input type="submit" name="submit" class="btn btn-default" value="Login" />
 		</form>
 		<br>
